@@ -1,0 +1,50 @@
+名称
+  intro -- 介绍C语言库
+
+说明
+ 本章内容主要是为您呈现C语言库及功能的概览、错误返回值、定义和概念。
+ 多数情况下这些手册中的函数均来自C语言库*libc*。其它类如数学*libm*等
+ 库在编译时应带有-l选项。
+
+ 主要C语言库：
+
+ libc       (-lc)       C语言库函数。当使用C编译器[cc(1)][cc-1]时无需
+			为这些函数提供读取标志-lc。<br />`libc`是很多
+			“库”与函数群的集合，它主要引用了标准I/O进程、
+			数据库进程、位操作符、<br />字串操作符、字符测
+			试与操作符、DES加密进程、存储分配、时间函数、
+			信号处理及其它。
+
+ libcurses  (-lcurses -ltermcap)
+			二位非位图显示的终端独立显示管理进程。（请参考
+			ncurses(3))
+
+ libcompat  (-lcompat) 陈旧但依然可用的BSD4.3兼容性函数库。特别是旧版
+			本BSD源码包含和相兼容的系统调用与接口。建议尽可
+			能不使用此库中的函数。man手册亦对每一个兼容性进
+			程都标明了适宜调用的接口供用户使用。
+
+ libkvm     (-lkvm)	该库收集了与处理内核内存相关操作的函数。这些函
+			数即可用于常规运行的系统，也可用于crash dump的
+			情况下。（请参考kvm(3)）
+
+ libl	    (-ll)	lex(1)的库文件。
+
+ libm	    (-lm)	libm数学库。该库默认是根据需求被Pascal语言的编
+			译器读取，如需C语言编译器读取该库，必须添加-lm
+			读取标志。（请参考math(3)）
+
+ libmp	    (-lmp)
+
+ libtermcap (-ltermcap)	独立终端操作函数库包（请参考termcap(3)）
+
+ liby	    (-ly)	yacc(1)的库文件。
+
+文件列表
+  /usr/lib/libc.a		C语言库
+  /usr/lib/libc_p.a		根据用户资料（profile）编译的C语言库
+  /usr/lib/libm.a		数学库
+  /usr/lib/libm_p.a		根据用户资料编译的数学库
+
+参考
+  cc(1),ld(1),nm(1),intro(2),math(3),stdio(3)
