@@ -1,0 +1,72 @@
+名称
+	kill -- 结束一个进程或向该进程发送信号
+
+使用方法
+  kill [-s signal_name] pid ...
+  kill -l [exit_status]
+  kill -signal-name pid ...
+  kill -signal_number pid ...
+
+说明
+  kill组件用于向指定pid的进程发送信号。
+
+  只有管理员用户可以对其他用户进程发送信号。
+
+  有以下选项可供使用：
+
+  -s signal_name 
+	kill默认发送TERM信号给进程，通过此选项用户可以选择
+	向进程发送其它信号。
+
+  -l exit_status
+	如果没有指定退出状态，则显示所有kill可以发送的信号名称。
+	如果指定退出状态，则返回对应状态值的信号名称。
+
+  -signal_name
+	发送信号的名称，默认为TERM。
+
+  -signal_number
+	只能为十进制正整数，发送指定的信号。
+
+  如下PID有特殊用意：
+
+   -1	如果是管理员用户，指定的信号将被广播至所有进程。如果是非
+	管理员用户，则广播至该用户的所有进程。
+
+  常见可用信号如下：
+
+   1	HUP	挂起
+   2	INT	中断
+   3	QUIT	退出
+   6	ABRT	中止
+   9	KILL	杀死（非异常停止进程，无抓取或忽略异常状态）
+   14	ALRM	闹钟
+   15	TERM	软件终止信号
+
+  多数情况下shell都提供一个内建的kill命令，这些内建命令与kill相似
+  甚至完全相同。具体请参考哦builtin(1)中的说明。
+
+退出状态
+  kill执行成功返回0，失败返回大于0的退出状态值。
+
+示例
+  结束PID为142和157的进程：
+	kill 142 157
+
+  将PID为507的进程挂起：
+	kill -s HUP 507
+
+  将PGID为117的整组进程终止：
+	kill -- -117
+
+参考
+  builtin(1),csh(1),killall(1),ps(1),sh(1),kill(2),sigaction(2)
+
+标准
+  kill组件执行标准与IEEE Std 1003.2("POSIX.2")所列标准一致。
+
+历史
+  kill最早出现于 AT&T UNIX第3版
+
+BUGS
+  csh(1)用户应在使用时应改为使用"kill 0"命令。
