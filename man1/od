@@ -1,5 +1,5 @@
 名称
-	od -- 将文件以八进制、十进制 、十六进制、ASCII的方式导出
+  od -- 将文件以八进制、十进制 、十六进制、ASCII的方式导出
 
 使用方法
   od [-aBbcDdeFfHhIiLlOosvXx][-a base][-j skip][-N length]

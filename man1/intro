@@ -11,7 +11,7 @@
  编码表示错误信息的类型，当然也有部分程序执行后会返回大于0的值（比如：1）。
 
 参考
-apropos(1),man(1),sysexits(3),security(7),intro(2),intro(3),intro(4),
-intro(5),intro(6),intro(7),intro(8),intro(9)
+ apropos(1),man(1),sysexits(3),security(7),intro(2),intro(3),intro(4),
+ intro(5),intro(6),intro(7),intro(8),intro(9)
 
 教程位于UNIX用户手册增补文档中
