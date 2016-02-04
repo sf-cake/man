@@ -1,66 +1,66 @@
 名称
-	ttys -- 终端初始化信息
+  ttys -- 终端初始化信息
 
 说明
- ttys是用于存放各类常规初始化与控制终端信息的文件。该文件通常
- 是由包含库函数getttyent(3)的进程读取使用。ttys文件的每一行对
- 应一个指定的终设备文件，通过tab或空格分隔信息，多个单词的信息
- 应由半角的引号所包含。文件中可以随意输入空行或注释行，注释行
- 以半角井号开头，任何未指定的区域均视为空值。
+  ttys是用于存放各类常规初始化与控制终端信息的文件。该文件通常
+  是由包含库函数getttyent(3)的进程读取使用。ttys文件的每一行对
+  应一个指定的终设备文件，通过tab或空格分隔信息，多个单词的信息
+  应由半角的引号所包含。文件中可以随意输入空行或注释行，注释行
+  以半角井号开头，任何未指定的区域均视为空值。
 
- - 第一列应填写 /dev 中终端专属的文件名称，如果不涉及tty相关的
-   命令，这里也可以填写任意字符。
+  - 第一列应填写 /dev 中终端专属的文件名称，如果不涉及tty相关的
+    命令，这里也可以填写任意字符。
 
- - 第二列应填写该名称所需执行的命令，通常应为getty(8)，getty(8)
-   将开启本行指令，设置速度，等待用户输入用户名并执行login(1)程序。
-   这里可以填写诸如打开window系统的终端模拟器、开启某些守护进程等
-   任何所需执行的命令。这里也可以填写多个参数的命令，您只要把这些
-   单词用引号括起来就可以了。
+  - 第二列应填写该名称所需执行的命令，通常应为getty(8)，getty(8)
+    将开启本行指令，设置速度，等待用户输入用户名并执行login(1)程序。
+    这里可以填写诸如打开window系统的终端模拟器、开启某些守护进程等
+    任何所需执行的命令。这里也可以填写多个参数的命令，您只要把这些
+    单词用引号括起来就可以了。
 
- - 第三列应填写终端的连接类型，通常您可以填写在termcap(5)文件能中
-   找到的任意一个数据项。而环境变量TERM则是由getty(8)或login(1)所
-   赋值的。
+  - 第三列应填写终端的连接类型，通常您可以填写在termcap(5)文件能中
+    找到的任意一个数据项。而环境变量TERM则是由getty(8)或login(1)所
+    赋值的。
 
- - 最后一列设置ty_status的进入标志(请参考getty(8))，设置Window系
-   统进程、终端维护内容，以区分tty的类型（比如拨号、网络或其他），
-   或指定一个允许tty组的登录类型库（请参考login.conf(5)以组别的方
-   式自行设置启用、禁用、允许或禁止整组的帐号配置。
+  - 最后一列设置ty_status的进入标志(请参考getty(8))，设置Window系
+    统进程、终端维护内容，以区分tty的类型（比如拨号、网络或其他），
+    或指定一个允许tty组的登录类型库（请参考login.conf(5)以组别的方
+    式自行设置启用、禁用、允许或禁止整组的帐号配置。
 
- 当进入标志为“On”或“Off”时，用以指定[init(8)][init-8]是否执行第二
- 列的命令。“onifconsole”则只有在目标为已激活控制台设备时才执行（此
- 时等同于“On”标志，否则等同于“Off”）。“secure”标志意味着（控制台已
- 启用时）用户可以以UID0的身份登录并执行指令。“dialin”标志表示账户
- 以拨号的方式接入，而“network”则表示账户登录时应连接网络。这些内容
- 也可以在第三列中指定。“windows=”标志表示在执行第二列中的命令前先执
- 行括号中所包含的指令。
+  当进入标志为“On”或“Off”时，用以指定[init(8)][init-8]是否执行第二
+  列的命令。“onifconsole”则只有在目标为已激活控制台设备时才执行（此
+  时等同于“On”标志，否则等同于“Off”）。“secure”标志意味着（控制台已
+  启用时）用户可以以UID0的身份登录并执行指令。“dialin”标志表示账户
+  以拨号的方式接入，而“network”则表示账户登录时应连接网络。这些内容
+  也可以在第三列中指定。“windows=”标志表示在执行第二列中的命令前先执
+  行括号中所包含的指令。
 
- “group=”后面填写用户组的名称，该组名应该被login.conf(5)所识别，从
- 而指定多个tty为一个组的成员，以共享该组账户的权限。如果未指定任何
- 组名，则系统默认为“无”。“group=”只可写在最后，可以写在最后一条注释之前。
+  “group=”后面填写用户组的名称，该组名应该被login.conf(5)所识别，从
+  而指定多个tty为一个组的成员，以共享该组账户的权限。如果未指定任何
+  组名，则系统默认为“无”。“group=”只可写在最后，可以写在最后一条注释之前。
 
- 无论是“window=”指定的命令还是第二列中填写的命令，它们都将被分割为
- 单词并通过execve(2)来执行。命令中各单词均以tab或空格作为分隔符进
- 行划分。如果所需执行的命令参数需要空格，则要额外输入单引号将空格
- 包含在语句中。请注意，该语句不支持通配符和其他替换性质的内容。
+  无论是“window=”指定的命令还是第二列中填写的命令，它们都将被分割为
+  单词并通过execve(2)来执行。命令中各单词均以tab或空格作为分隔符进
+  行划分。如果所需执行的命令参数需要空格，则要额外输入单引号将空格
+  包含在语句中。请注意，该语句不支持通配符和其他替换性质的内容。
 
 文件列表
- /etc/ttys
+  /etc/ttys
 
 示例
- # root以1200波特率登录控制台
- console "/usr/libexec/getty std.1200" vt100 on secure
- # 以1200波特率进行拨号，不允许root登录
- ttyd0 "/usr/libexec/getty d1200" dialup on group=dialup # 555-1234
- # 迈克的终端是一台HP2621
- ttyh0 "/usr/libexec/getty std.9600" hp2621-n1	on group=dialup #457 Evan
- # 约翰的终端是vt100
- ttyh1 "/usr/libexec/getty std.9600" vt100	on group=dialup #459 Evan
- # window系统下的终端模拟器
- ttyv0 "/usr/local/bin/xterm -display :0" xterm	on window="/usr/local/bin/X :0"
- # 网络伪ttys —— 不启用getty
- ttyp0 none network	group=pty
- ttyp1 none network off	group=pty
+  # root以1200波特率登录控制台
+  console "/usr/libexec/getty std.1200" vt100 on secure
+  # 以1200波特率进行拨号，不允许root登录
+  ttyd0 "/usr/libexec/getty d1200" dialup on group=dialup # 555-1234
+  # 迈克的终端是一台HP2621
+  ttyh0 "/usr/libexec/getty std.9600" hp2621-n1	on group=dialup #457 Evan
+  # 约翰的终端是vt100
+  ttyh1 "/usr/libexec/getty std.9600" vt100 on group=dialup #459 Evan
+  # window系统下的终端模拟器
+  ttyv0 "/usr/local/bin/xterm -display :0" xterm on window="/usr/local/bin/X :0"
+  # 网络伪ttys —— 不启用getty
+  ttyp0 none network group=pty
+  ttyp1 none network off group=pty
 
 参考
- login(1),gettyent(3),gettytab(5),login.conf(5),termcap(5)
- getty(8),init(8)
+  login(1),gettyent(3),gettytab(5),login.conf(5),termcap(5)
+  getty(8),init(8)
