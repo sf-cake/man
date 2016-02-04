@@ -2,8 +2,8 @@
 	od -- 将文件以八进制、十进制 、十六进制、ASCII的方式导出
 
 使用方法
-  od [-aBbcDdeFfHhIiLlOosvXx][-a *base*][-j *skip*][-N *length*]
-     [-t *type*][[+]*offset*[.][Bb]][*file* ...]
+  od [-aBbcDdeFfHhIiLlOosvXx][-a base][-j skip][-N length]
+     [-t type][[+]offset[.][Bb]][file ...]
 
 说明
   od组件用于过滤显示用户指定格式的文件，若无文件指示则显示标准输入信息。
