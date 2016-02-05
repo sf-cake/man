@@ -1,0 +1,17 @@
+名称
+  true -- 返回一个真值
+
+使用方法
+  true
+
+说明
+  true组件的退出状态值永远为0.
+
+  一些shell会提供自己的内建true命令，功能与true组件的功能一致，详细请参
+  考builtin(1)中的内容。
+
+参考
+  builtin(1),csh(1),false(1),sh(1)
+
+标准
+  true组件执行标准与IEEE Std 1003.2("POSIX.2")所列标准相符。
