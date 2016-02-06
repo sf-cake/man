@@ -1,0 +1,25 @@
+名称
+  printenv -- 打印环境信息
+
+使用方法
+  printenv [name]
+
+说明
+  printenv组件可以用来打印当前环境下的环境变量名称及对应的值，每行一组
+  环境变量值对，如果指定了name，则只显示该name的对应值。
+
+  一些shell会提供自己的内建printenv组件，功能与printenv功能一致，详细请
+  参考builtin(1)中的内容。
+
+退出状态
+  printenv组件执行成功返回0，失败返回大于0的退出状态值。
+
+参考
+  csh(1),env(1),sh(1),environ(7)
+
+标准
+  printenv组件仅被用于早期BSD与FreeBSD产品，并未指明具体标准。printenv功
+  能可以通过echo(1)与env(1)组件搭配完成。
+
+历史
+  printenv首次出现于BSD3.0版本
