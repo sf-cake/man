@@ -1,0 +1,86 @@
+名称
+	strings - 打印输出文件中所有可以显示的字符
+
+使用方法
+	strings [-afovV] [-min-len]
+		[-n min-len] [--bytes=min-len]
+		[-t radix] [--radix=radix]
+		[-e encoding] [--encoding=encoding]
+		[-] [-all] [--print-file-name]
+		[-T bfdname] [--target=bfdname]
+		[--help] [--version] file...
+
+说明
+	所提供的文件中，只要文件当中存在长度超过4字符（或通过选项指定的其它长度）
+	的可打印字符序列，GNU strings都可以将其打印输出显示。默认情况下它只作用于
+	已事先初始化并已载入的对象文件片段。而其它类文件则只是输出所有文件的内容。
+
+	strings主要用于确认非文本类文件的内容。
+
+选项
+	-a
+	--all
+	- 	通常程序只扫描已事先初始化并载入的对象文件，这个选项则可以指定扫
+		描整个文件内容
+
+	-f
+	--print-file-name
+		在每一组字串前先输出该字串所在文件的文件名
+
+	--help
+		打印显示程序用法到标准输出之后退出
+
+	-min-len
+	-n min-len
+	--bytes=min-len
+		只打印指定长度或更长的字符，默认为4
+
+	-o	相当于 -t o。根据版本不同，有些版本的-o选项相当于执行了-t d。
+		鉴于我们无法同时实现两种模式，所以我们理解为这个选项肯定是上述
+		两种情况之一即可
+
+	-t radix
+	--radix=radix
+		输出每一个字符的偏移值。偏移值的进制位分别用三个字符指定。
+		即：o 为八进制、x为十六进制、d为十进制
+
+	-e encoding
+	--encoding=encoding
+		将可打印字串扩充为指定编码。encoding的值为如下几类：
+		默认为s 即“半角7位码字符”（如：ASCII, ISO8859等），另外还有：
+		S 半角8位码字符
+		b 大端16位码字符
+		B 大端32位码字符
+		l 小端16位码字符
+		L 小端32位码字符
+		通过这些选项你可以设置让程序将宽字符纳入可打印认知范畴
+		（例如通过d和l搜索 UTF16/UCS-2编码的字符）
+
+	-T bfdname
+	--target=bfdname
+		用指定对象代码取代系统默认的输出格式
+
+	-v
+	-V
+	--version
+		打印输出当前软件版本号并退出
+
+	@file
+		根据命令行内各选项读取文件。所有选项都会插入在@file前面处理。即便文件不存在
+		或不可读，也视为选项有效，其选项的功能不会被取消。
+
+		文件中的选项默认都用空格符分隔。空白符可以设置于任何单行或双引号范围内的地
+		方。任何特殊字符都可以通过前置修饰副“\”指定。如果file也存在自己的选项，则程
+		序会将该选项通过递归的方式执行。
+
+参考
+	ar(1), nm(1), objdum(1), ranlib(1), readelf(1)以及binutils相关的info页。
+
+版权
+       Copyright (c) 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
+       2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
+
+       Permission is granted to copy, distribute and/or modify this document under the terms of the GNU
+       Free Documentation License, Version 1.3 or any later version published by the Free Software
+       Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.  A
+       copy of the license is included in the section entitled "GNU Free Documentation License".
