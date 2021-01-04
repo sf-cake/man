@@ -1,0 +1,38 @@
+名称
+  mknode -- 生成块或字符特殊文件
+使用方法
+  mknod [OPTION]... NAME TYPE [MAJOR MINOR]
+说明
+  生成指定类型的特殊文件
+  -m, --mode=MODE
+    设置权限模式，是八进制表达法，不是a=rw，更不是umask
+  -Z
+    设置SELinux的标签作为默认类型
+  --context[=CTX]
+    与-Z功能类似，如果指定了CTX，则SELinux获SMACK安全上下文就都会被指定为CTX
+  --help 
+    显示此帮助信息并退出
+  --version
+    显示版本信息并退出
+    
+  如果 TYPE 是 b、c 或 u，就必须指定 MAJOR 和 MINOR 的值，而当 TYPE 是 P 的时候，这两个值必须省略不写。指定 MAJOR 或 MINOR 的时候可以通过0x或0X表示16进制数，0起头表示八进制数，默认表示10进制数。
+  TYPE 主要有如下几个值：
+    b     生成一个有缓存的块文件
+    c, u  生成一个字符文件
+    p     生成一个FIFO文件
+    
+  需要注意的是并非每个shell的mknod都一致，不同shell也会将此man手册替代为对应的版本，因此在不同环境使用mknod的时候请先查询对应环境下的man手册。（比如freeBSD已经不再支持mknod，又或者不同的Linux发布版本或shell都有不同的mknod的支持）
+作者
+  Written by David MacKenzie.
+BUG反馈
+  GNU 核心组件在线帮助： <https://www.gnu.org/software/coreutils/>
+  报告mknod翻译问题请到：<https://translationproject.org/team/>
+版权信息
+  Copyright © 2018 Free Software Fundation, Inc. License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+  This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.
+参考
+  mknod(2)
+  
+  全部文档可以在这里找到：<https://www.gnu.org/software/coreutils/mknod>
+  或者也可以通过info查看全版本文档： info '(coreutils) mknod invocation'
+  
